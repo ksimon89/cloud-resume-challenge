@@ -1,0 +1,239 @@
+/* Keep your existing CSS and add/modify these sections */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables for consistent theming */
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #74b7fa;
+    --text-color: #00fa11;
+    --background-color: #010101;
+    --section-spacing: 2rem;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: var(--section-spacing);
+}
+
+.name {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Section Styles */
+section {
+    margin-bottom: var(--section-spacing);
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Experience and Education Styles */
+.experience-item, .education-item {
+    margin-bottom: 1.5rem;
+}
+
+.job-title, .degree {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.company, .school {
+    color: var(--secondary-color);
+}
+
+.date {
+    font-style: italic;
+    color: #666;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.skill-category h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.skill-list {
+    list-style: none;
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: rgb(0, 0, 0);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Visitor Counter */
+#visitor-counter {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgb(0, 0, 0);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Matrix Effect Container */
+section {
+    margin-bottom: var(--section-spacing);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Matrix Overlay */
+section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 32, 0, 0.95) 100%
+    );
+    z-index: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Matrix Characters */
+section::after {
+    content: "01010101 10101010 11001100";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #0f0;
+    font-family: monospace;
+    font-size: 1.2rem;
+    line-height: 1;
+    white-space: break-spaces;
+    text-align: justify;
+    padding: 1rem;
+    opacity: 0.7;
+    z-index: 2;
+    animation: matrix-rain 2s linear infinite;
+    pointer-events: none;
+}
+
+/* Hide Matrix effect on hover */
+section:hover::before,
+section:hover::after {
+    opacity: 0;
+}
+
+/* Make section content appear above the Matrix effect */
+section > * {
+    position: relative;
+    z-index: 0;
+}
+
+/* Keep header and visitor counter clear */
+header::before,
+header::after,
+#visitor-counter::before,
+#visitor-counter::after {
+    display: none;
+}
+
+/* Matrix Rain Animation */
+@keyframes matrix-rain {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+/* Optional: Add a glow effect to text when revealed */
+section {
+    transition: all 0.3s ease;
+}
+
+section:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Optional: Add scan line effect */
+section::before {
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.9) 1px,
+        rgba(0, 32, 0, 0.95) 1px,
+        rgba(0, 32, 0, 0.95) 2px
+    );
+}
+
+/* Make sure content is initially hidden under the effect */
+section {
+    background: black;
+    color: #fff;
+}
+
+section:hover {
+    background: var(--background-color);
+    color: var(--text-color);
+}
