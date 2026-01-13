@@ -1,0 +1,169 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables for consistent theming */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --text-color: #333;
+    --background-color: #f8f9fa;
+    --section-spacing: 2rem;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: var(--section-spacing);
+}
+
+.name {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Section Styles with Blur Effect */
+section {
+    margin-bottom: var(--section-spacing);
+    transition: all 0.3s ease;
+    filter: blur(4px);
+    user-select: none;
+    position: relative; /* Added for hover indicator positioning */
+}
+
+section:hover {
+    filter: blur(0);
+    user-select: auto;
+}
+
+/* Hover indicator */
+section::before {
+    content: "Hover to reveal";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.7;
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+section:hover::before {
+    opacity: 0;
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Experience and Education Styles */
+.experience-item, .education-item {
+    margin-bottom: 1.5rem;
+}
+
+.job-title, .degree {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.company, .school {
+    color: var(--secondary-color);
+}
+
+.date {
+    font-style: italic;
+    color: #666;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.skill-category h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.skill-list {
+    list-style: none;
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Visitor Counter - Keep clear */
+#visitor-counter {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    filter: blur(0);
+    user-select: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Keep header clear */
+header {
+    filter: blur(0);
+    user-select: auto;
+}

@@ -6,6 +6,49 @@
     <title>Your Name - Cloud Resume</title>
     <link rel="stylesheet" href="stylesv3.css">
     <script src="matrix.js"></script>
+    <script>
+        (function () {
+        var webSdkScript = document.createElement("script");
+
+        // fetch the latest 2.x.x version of the Web-SDK from the CDN
+        webSdkScript.src =
+            "https://unpkg.com/@grafana/faro-web-sdk@2/dist/bundle/faro-web-sdk.iife.js";
+
+        webSdkScript.onload = () => {
+            window.GrafanaFaroWebSdk.initializeFaro({
+            url: "https://faro-collector-prod-us-east-2.grafana.net/collect/4baf10de0196549c5c0d93988db734da",
+            app: {
+                name: "KCP",
+                version: "1.0.0",
+                environment: "production",
+            },
+            
+            });
+
+
+            // Load instrumentations at the onLoad event of the web-SDK and after the above configuration.
+            // This is important because we need to ensure that the Web-SDK has been loaded and initialized before we add further instruments!
+            var webTracingScript = document.createElement("script");
+
+            // fetch the latest 2.x.x version of the Web Tracing package from the CDN
+            webTracingScript.src =
+            "https://unpkg.com/@grafana/faro-web-tracing@2/dist/bundle/faro-web-tracing.iife.js";
+
+            // Initialize, configure (if necessary) and add the the new instrumentation to the already loaded and configured Web-SDK.
+            webTracingScript.onload = () => {
+            window.GrafanaFaroWebSdk.faro.instrumentations.add(
+                new window.GrafanaFaroWebTracing.TracingInstrumentation()
+            );
+            };
+
+            // Append the Web Tracing script script tag to the HTML page
+            document.head.appendChild(webTracingScript);
+        };
+
+        // Append the Web-SDK script script tag to the HTML page
+        document.head.appendChild(webSdkScript);
+        })();
+</script>
 </head>
 <body>
     <header>
@@ -15,7 +58,7 @@
             <span>📧 <a href="mailto:kirklandsimon@gmail.com">kirklandsimon@gmail.com </a> </span>
             <span>📱 (862) 596-4482</span>
             <span>📍 New Jersey </span>
-            <span>🔗 <a href="https://www.linkedin.com/in/kirk-s-682519131/">LinkedIn</a></span>
+            <span>🔗 <a href="https://www.linkedin.com/in/kirk-n-b8a3a6353/">LinkedIn</a></span>
             <span>💻 <a href="https://github.com/ksimon89">GitHub</a></span>
         </div>
     </header>
